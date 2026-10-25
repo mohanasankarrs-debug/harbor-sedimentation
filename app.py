@@ -17,6 +17,51 @@ st.set_page_config(
     layout="wide",
 )
 
+
+st.markdown("""
+<style>
+/* Dark ocean background */
+.stApp {
+    background: linear-gradient(135deg, #071827, #10384a);
+    color: #e8f4f8;
+}
+
+/* Spacious dashboard */
+.block-container {
+    padding-top: 2rem;
+    max-width: 1450px;
+}
+
+/* Professional prediction cards */
+div[data-testid="stMetric"] {
+    background: linear-gradient(145deg, #12354a, #0d293b);
+    border: 1px solid #226078;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 6px 22px rgba(0, 0, 0, 0.18);
+}
+
+/* Teal prediction values */
+div[data-testid="stMetricValue"] {
+    color: #5de4d0;
+}
+
+/* Sidebar */
+section[data-testid="stSidebar"] {
+    background: #071522;
+}
+
+/* Rounded buttons */
+.stButton > button {
+    background: #19c6bd;
+    color: #071827;
+    border-radius: 10px;
+    border: none;
+    font-weight: 700;
+}
+</style>
+""", unsafe_allow_html=True)
+
 st.title("🌊 AI-Based Harbor Sedimentation Prediction")
 st.subheader("Machine Learning–Based Sedimentation Forecasting and Predictive Dredging Management")
 
