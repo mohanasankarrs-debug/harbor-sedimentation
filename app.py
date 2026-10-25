@@ -9,7 +9,7 @@ from datetime import datetime
 # Project paths
 BASE_DIR = Path(__file__).resolve().parent.parent
 OUT_DIR = BASE_DIR / "outputs"
-DATA_FILE = BASE_DIR / "data" / "chennai_port_simulated_sedimentation.csv"
+DATA_FILE = BASE_DIR / "chennai_port_simulated_sedimentation.csv"
 
 st.set_page_config(
     page_title="Harbor Sedimentation Forecast",
