@@ -152,12 +152,6 @@ importance_path = OUT_DIR / "feature_importance.png"
 if importance_path.exists():
     st.image(str(importance_path), caption="Feature importance")
 
-st.caption(
-    "Research limitation: model metrics and forecasts are based on simulated "
-    "data and should not be interpreted as real port measurements."
-)
-
-
 # Dredging Process
 st.divider()
 st.header("🚢 Dredging Process")
