@@ -7,8 +7,8 @@ import streamlit as st
 from datetime import datetime
 
 # Project paths
-BASE_DIR = Path(__file__).resolve().parent.parent
-OUT_DIR = BASE_DIR / "outputs"
+BASE_DIR = Path(__file__).resolve().parent
+OUT_DIR = BASE_DIR
 DATA_FILE = BASE_DIR / "chennai_port_simulated_sedimentation.csv"
 
 st.set_page_config(
