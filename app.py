@@ -18,7 +18,7 @@ st.set_page_config(
 )
 
 st.title("🌊 AI-Based Harbor Sedimentation Prediction")
-st.subheader("Chennai Port — Final Year Project")
+st.subheader("Machine Learning–Based Sedimentation Forecasting and Predictive Dredging Management")
 
 # Load data and model
 if not DATA_FILE.exists():
