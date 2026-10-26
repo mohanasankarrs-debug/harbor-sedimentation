@@ -5,6 +5,9 @@ import joblib
 import pandas as pd
 import streamlit as st
 from datetime import datetime
+import folium
+from streamlit_folium import st_folium
+
 
 # Project paths
 BASE_DIR = Path(__file__).resolve().parent
@@ -64,6 +67,95 @@ section[data-testid="stSidebar"] {
 
 st.title("🌊 AI-Based Harbor Sedimentation Prediction")
 st.subheader("Machine Learning–Based Sedimentation Forecasting and Predictive Dredging Management")
+
+
+st.markdown("### 🌍 Worldwide Harbor Explorer")
+st.write("Select a harbor on the map to view its location.")
+
+harbors = {
+    "Chennai Port, India": (13.0827, 80.2707),
+    "Singapore Port": (1.2644, 103.8220),
+    "Port of Rotterdam, Netherlands": (51.9244, 4.4777),
+    "Port of Los Angeles, USA": (33.7405, -118.2720),
+    "Port of Shanghai, China": (31.2304, 121.4737),
+    "Port of Mumbai, India": (18.9388, 72.8354),
+    "Port of Sydney, Australia": (-33.8568, 151.2153),
+}
+
+selected_harbor = st.selectbox(
+    "Search and select a harbor",
+    list(harbors.keys())
+)
+
+latitude, longitude = harbors[selected_harbor]
+
+world_map = folium.Map(
+    location=[20, 0],
+    zoom_start=2,
+    tiles="OpenStreetMap"
+)
+
+for harbor_name, coords in harbors.items():
+    folium.Marker(
+        location=coords,
+        tooltip=harbor_name,
+        popup=harbor_name,
+        icon=folium.Icon(color="blue", icon="ship", prefix="fa")
+    ).add_to(world_map)
+
+world_map.location = [latitude, longitude]
+world_map.zoom_start = 5
+
+st_folium(
+    world_map,
+    width=None,
+    height=500,
+    use_container_width=True
+)
+
+st.info(
+    f"Selected harbor: {selected_harbor} | "
+    f"Coordinates: {latitude:.4f}, {longitude:.4f}"
+)
+
+
+st.markdown("## 📂 Dataset Upload Center")
+st.write("Upload a CSV file to inspect your harbor or marine data.")
+
+uploaded_file = st.file_uploader(
+    "Choose a CSV dataset",
+    type=["csv"],
+    help="Upload a CSV file containing marine or sedimentation data."
+)
+
+if uploaded_file is not None:
+    try:
+        uploaded_data = pd.read_csv(uploaded_file)
+
+        st.success("Dataset uploaded successfully!")
+        st.write("### Dataset Preview")
+        st.dataframe(uploaded_data.head(10), width="stretch")
+
+        col1, col2, col3 = st.columns(3)
+        with col1:
+            st.metric("Total Rows", uploaded_data.shape[0])
+        with col2:
+            st.metric("Total Columns", uploaded_data.shape[1])
+        with col3:
+            st.metric(
+                "Missing Values",
+                int(uploaded_data.isna().sum().sum())
+            )
+
+        st.download_button(
+            "Download Uploaded Dataset",
+            data=uploaded_file.getvalue(),
+            file_name=uploaded_file.name,
+            mime="text/csv"
+        )
+
+    except Exception as e:
+        st.error(f"Could not read this CSV file: {e}")
 
 # Load data and model
 if not DATA_FILE.exists():
