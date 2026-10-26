@@ -90,8 +90,8 @@ selected_harbor = st.selectbox(
 latitude, longitude = harbors[selected_harbor]
 
 world_map = folium.Map(
-    location=[20, 0],
-    zoom_start=2,
+    location=[latitude, longitude],
+    zoom_start=6,
     tiles="OpenStreetMap"
 )
 
