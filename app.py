@@ -19,7 +19,93 @@ st.set_page_config(
     page_icon="🌊",
     layout="wide",
 )
+# ==============================
+# PROFESSIONAL DASHBOARD DESIGN
+# ==============================
 
+st.markdown("""
+<style>
+
+/* Main dashboard background */
+.stApp {
+    background: linear-gradient(135deg, #071827 0%, #0b2638 100%);
+    color: #e8f1f5;
+}
+
+/* Main content spacing */
+.block-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    max-width: 1500px;
+}
+
+/* Main headings */
+h1, h2, h3 {
+    color: #eaf7ff !important;
+    font-weight: 700 !important;
+}
+
+/* Paragraphs and labels */
+p, label {
+    color: #c5d7e2;
+}
+
+/* Metric cards */
+[data-testid="stMetric"] {
+    background: linear-gradient(145deg, #103449, #0b2638);
+    border: 1px solid #236078;
+    border-radius: 16px;
+    padding: 22px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.18);
+}
+
+/* Metric labels */
+[data-testid="stMetricLabel"] {
+    color: #a9c4d3 !important;
+}
+
+/* Metric values */
+[data-testid="stMetricValue"] {
+    color: #4de2cf !important;
+    font-weight: 700;
+}
+
+/* Tabs */
+.stTabs [data-baseweb="tab"] {
+    color: #c5d7e2;
+    font-weight: 600;
+}
+
+/* Buttons */
+.stButton > button {
+    background: linear-gradient(90deg, #0e7490, #0d9488);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 0.55rem 1.1rem;
+    font-weight: 600;
+}
+
+/* Button hover */
+.stButton > button:hover {
+    background: #14b8a6;
+    color: white;
+    border: none;
+}
+
+/* Dataframes */
+[data-testid="stDataFrame"] {
+    border: 1px solid #236078;
+    border-radius: 12px;
+}
+
+/* Dividers */
+hr {
+    border-color: #23485b;
+}
+
+</style>
+""", unsafe_allow_html=True)
 
 st.markdown("""
 <style>
